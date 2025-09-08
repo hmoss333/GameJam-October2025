@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "phaser": "^3.90.0"
+  },
+  "name": "gamejam-october2025",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmoss333/GameJam-October2025.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hmoss333/GameJam-October2025/issues"
+  },
+  "homepage": "https://github.com/hmoss333/GameJam-October2025#readme"
+}
