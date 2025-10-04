@@ -5,15 +5,17 @@ class Title extends Phaser.Scene {
         super({ key: 'title' });
     }
 
+    preload() {
+        this.load.image('turnstile', '../../assets/turnstile.png');
+    }
+
     create ()
     {   
-        this.score = 0;
+        var image = this.add.image(200, 150, 'turnstile');
         var spaceBar = this.input.keyboard.addKey("SPACE");
-        this.add.text(0, 0, 'Discord Interview', {fontSize: "48px"})
-        this.add.text(0, 150, 'press the spacebar to change scene');
 
         spaceBar.on("down", function (event) {
-            this.scene.start('example');
+            this.scene.start('captcha');
         }, this);
     }
 }

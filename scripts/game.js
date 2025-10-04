@@ -1,19 +1,18 @@
-import {Example} from './scenes/example_scene.js';
+import {Captcha} from './scenes/captcha_scene.js';
 import {Title} from './scenes/title_scene.js';
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    scene: [ Title, Example],
+    parent: "captcha",
+    width: 400,
+    height: 300,
+    backgroundColor: '#FFFFFF',
+    scene: [ Title, Captcha],
     physics: {
         default: 'arcade',
         arcade: {
             debug: true
         }
-    },
-    dom: {
-    createContainer: true
     }
 };
 
