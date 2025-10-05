@@ -3,7 +3,7 @@ class Ship extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, 'ship');
         this.scene = scene;
-        this.ship = scene.physics.add.image(x, y, 'ship');
+        this.ship = scene.physics.add.image(x, y, 'ship_img');
         this.rotationSpeed = 10;
         this.ship.body.maxSpeed = 400;
         this.ship.body.setDrag(80);
@@ -30,6 +30,7 @@ class Ship extends Phaser.Physics.Arcade.Sprite {
             this.ship.body.rotation -= this.rotationSpeed;
         }
         if (this.cursorKeys.right.isDown) {
+            this.ship.body.rotation += this.rotationSpeed;
         }
         this.scene.physics.world.wrap(this.ship, 10);
     }

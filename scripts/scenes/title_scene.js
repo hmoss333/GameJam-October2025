@@ -20,5 +20,4 @@ class Title extends Phaser.Scene {
     }
 }
 
-
 export {Title};

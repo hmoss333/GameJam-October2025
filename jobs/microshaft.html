@@ -6,8 +6,10 @@
     <script src="../scripts/phaser.js"></script>
     <script type="module" src="../scripts/game.js"></script>
     <script type="module" src="../scripts//scenes/captcha_scene.js"></script>
+    <script type="module" src="../scripts//scenes/golden_ratio.js"></script>
     <script type="module" src="../scripts/scenes/title_scene.js"></script>
     <script type="module" src="../scripts/game-objects/turnstile.js"></script>
+    <script type="module" src="../scripts/game-objects/letter.js"></script>
     <link rel="stylesheet" href="../style.css">
 </head>
 <script>
@@ -38,7 +40,7 @@
             <button onclick="submitJobApplication();return false" type="submit">submit</button>
         </form>
 
-        <div id="captcha" style="display:none">
+        <div id="captcha">
             <h2>Prove you're human...</h2>
         </div>
     </div>
