@@ -36,8 +36,20 @@ export class FormComponent {
     this.qcs.toFormGroup(this.questions() as QuestionBase<string>[]),
   );
   payLoad = '';
+
+  isValid() {
+    let validity = true;
+    this.questions()?.filter(q => q.level <= this.level).forEach(q => {
+      if (this.form().controls[q.key]?.errors != null) {
+        validity =  false;
+      }
+    });
+    return validity;
+  }
   onSubmit() {
-    if (this.level = Number(this.route.snapshot.paramMap.get('id'))){
+    console.log(this.form());
+    console.log(this.questions())
+    if (this.level > Number(this.route.snapshot.paramMap.get('id'))){
       this.captcha.update(currentValue => !currentValue);
     } else {
       this.level += 1;

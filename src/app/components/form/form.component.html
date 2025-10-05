@@ -22,7 +22,7 @@
         }
     }
     <div class="form-row">
-      <button type="submit" [disabled]="!form().valid">Submit Application</button>
+      <button type="submit" [disabled]="!isValid()">Submit Application</button>
     </div>
   </form>
   @if (payLoad) {

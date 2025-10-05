@@ -37,6 +37,7 @@ export class QuestionService {
         type: 'number',
         order: 4,
         level: 2,
+        required: true,
       }),
       new DropdownQuestion({
         key: 'favoriteOS',
@@ -54,13 +55,15 @@ export class QuestionService {
         key: 'excuse',
         label: 'Why are you looking for a new role?',
         options: [
-          {key: 'mac', value: 'Mac'},
-          {key: 'windows', value: 'Windows'},
-          {key: 'gnulinux', value: 'GNU/Linux'},
-          {key: 'FreeBSD', value: 'FreeBSD'},
+          {key: 'failure', value: 'Currently Unemployed'},
+          {key: 'dissatisfaction', value: 'Avoiding a Crash Out at Current Company'},
+          {key: 'curiosity', value: 'Boredom'},
+          {key: 'compensation', value: 'I can\'t afford my Warhammer hobby'},
+          {key: 'other', value: 'Other'},
         ],
         order: 6,
         level: 3,
+        required: true,
       }),
     ];
     return of(questions.sort((a, b) => a.order - b.order));
