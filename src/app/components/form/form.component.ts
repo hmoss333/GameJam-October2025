@@ -12,11 +12,12 @@
 //   @Input({required: true}) captcha! : boolean;
 //   model = new JobAppForm('', '', '', '', '');
 // }
-import {Component, computed, inject, Input, input} from '@angular/core';
+import {Component, computed, inject, Input, input, model} from '@angular/core';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {DynamicFormQuestionComponent} from '../dynamic-form-question/dynamic-form-question.component';
 import {QuestionBase} from '../../models/QuestionBase';
 import {QuestionControlService} from '../../service/question-control.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -24,7 +25,10 @@ import {QuestionControlService} from '../../service/question-control.service';
   imports: [DynamicFormQuestionComponent, ReactiveFormsModule],
 })
 export class FormComponent {
-  @Input({required: true}) captcha! : boolean;
+  constructor(
+    private route: ActivatedRoute
+  ) {}
+  captcha = model<boolean>(false);
   level : integer = 1;
   private readonly qcs = inject(QuestionControlService);
   readonly questions = input<QuestionBase<string>[] | null>([]);
@@ -33,8 +37,10 @@ export class FormComponent {
   );
   payLoad = '';
   onSubmit() {
-    this.level += 1;
-    this.form();
-    this.payLoad = JSON.stringify(this.form().getRawValue());
+    if (this.level = Number(this.route.snapshot.paramMap.get('id'))){
+      this.captcha.update(currentValue => !currentValue);
+    } else {
+      this.level += 1;
+    }
   }
 }

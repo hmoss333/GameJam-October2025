@@ -8,18 +8,6 @@ export class QuestionService {
   // TODO: get from a remote source of question metadata
   getQuestions() {
     const questions: QuestionBase<string>[] = [
-      new DropdownQuestion({
-        key: 'favoriteOS',
-        label: 'Favorite Operating System',
-        options: [
-          {key: 'mac', value: 'Mac'},
-          {key: 'windows', value: 'Windows'},
-          {key: 'gnulinux', value: 'GNU/Linux'},
-          {key: 'FreeBSD', value: 'FreeBSD'},
-        ],
-        order: 8,
-        level: 2,
-      }),
       new TextboxQuestion({
         key: 'firstName',
         label: 'First name',
@@ -42,6 +30,37 @@ export class QuestionService {
         type: 'email',
         order: 3,
         level: 1,
+      }),
+      new TextboxQuestion({
+        key: 'desiredSalary',
+        label: 'What is your expected Salary?',
+        type: 'number',
+        order: 4,
+        level: 2,
+      }),
+      new DropdownQuestion({
+        key: 'favoriteOS',
+        label: 'Favorite Operating System',
+        options: [
+          {key: 'mac', value: 'Mac'},
+          {key: 'windows', value: 'Windows'},
+          {key: 'gnulinux', value: 'GNU/Linux'},
+          {key: 'FreeBSD', value: 'FreeBSD'},
+        ],
+        order: 5,
+        level: 2,
+      }),
+      new DropdownQuestion({
+        key: 'excuse',
+        label: 'Why are you looking for a new role?',
+        options: [
+          {key: 'mac', value: 'Mac'},
+          {key: 'windows', value: 'Windows'},
+          {key: 'gnulinux', value: 'GNU/Linux'},
+          {key: 'FreeBSD', value: 'FreeBSD'},
+        ],
+        order: 6,
+        level: 3,
       }),
     ];
     return of(questions.sort((a, b) => a.order - b.order));
