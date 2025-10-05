@@ -21,6 +21,8 @@ class GoldenSpiral extends Phaser.Scene {
     private currentStep: number = 0;
     private totalSteps: number = 30; // Number of Fibonacci circles to draw
 
+    private completed: boolean = false;
+
     constructor() {
         super({ key: 'GoldenSpiral' });
     }
@@ -51,8 +53,10 @@ class GoldenSpiral extends Phaser.Scene {
             }
         }
 
-        if (this.currentStep >= this.totalSteps){
+        if (this.currentStep >= this.totalSteps && !this.completed){
+            console.log("Completed captcha");
             EventBus.emit('captcha-complete');
+            this.completed = true;
         }
     }
 
