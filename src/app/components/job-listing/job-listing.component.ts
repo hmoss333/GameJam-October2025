@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { JobListing } from '../../interfaces/JobListing';
+import { JobListing } from '../../models/JobListing';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 

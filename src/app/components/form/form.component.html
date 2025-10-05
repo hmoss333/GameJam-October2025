@@ -1,0 +1,31 @@
+<!-- <p>form works!: {{captcha}}</p>
+<form [formGroup]="profileForm"  (ngSubmit)="onSubmit()">  
+    <label for="first-name">First Name: </label>  
+    <input id="first-name" type="text" formControlName="firstName" /> 
+    <br>
+    <label for="last-name">Last Name: </label>  
+    <input id="last-name" type="text" formControlName="lastName" />
+    <br>
+    <label for="emailAddress">Email Address: </label>  
+    <input id="emailAddress" type="text" formControlName="emailAddress" />
+    <br>
+    <button type="submit" [disabled]="!profileForm.valid">Submit Application</button>
+</form> -->
+
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form()">
+    @for (question of questions(); track question) {
+        @if(question.level <= level){
+        <div class="form-row">
+            <app-question [question]="question" [form]="form()" />
+        </div>
+        }
+    }
+    <div class="form-row">
+      <button type="submit" [disabled]="!form().valid">Submit Application</button>
+    </div>
+  </form>
+  @if (payLoad) {
+    <div class="form-row"><strong>Saved the following values</strong><br />{{ payLoad }}</div>
+  }
+</div>

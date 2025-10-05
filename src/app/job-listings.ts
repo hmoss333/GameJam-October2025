@@ -1,4 +1,4 @@
-import { JobListing } from "./interfaces/JobListing";
+import { JobListing } from "./models/JobListing";
 
 export const LISTINGS: JobListing[]  = [
     {

@@ -1,2 +1,7 @@
 <h1>Applying at {{job?.company}}</h1>
-<app-phaser-captcha></app-phaser-captcha>
+
+<app-form [captcha]="showCaptcha" [questions]="questions$ | async"></app-form>
+
+<div *ngIf="showCaptcha">
+    <app-phaser-captcha></app-phaser-captcha>
+</div>
