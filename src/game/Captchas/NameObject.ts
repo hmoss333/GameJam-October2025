@@ -11,6 +11,9 @@ export class NameObject extends Scene
     private x!: number;
     private y!: number;
 
+    private enterKey: any;
+    domElement: Phaser.GameObjects.DOMElement;
+
     constructor ()
     {
         super('NameObject');
@@ -35,9 +38,19 @@ export class NameObject extends Scene
         inputElement.placeholder = 'Type here';
         inputElement.style.width = '200px';
 
-        const domElement = this.add.dom(250, 300, inputElement);
-        domElement.setOrigin(0.5); // Center the DOM element
+        this.domElement = this.add.dom(250, 300, inputElement);
+        this.domElement.setOrigin(0.5); // Center the DOM element
 
         EventBus.emit('current-scene-ready', this);
+
+        this.enterKey = this.input.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+    }
+
+    override update(time: number, delta: number): void {
+        if (Phaser.Input.Keyboard.JustDown(this.enterKey) && this.domElement.node.textContent != null)
+        {
+            console.log('Completed Captcha');
+            EventBus.emit('captcha-complete');
+        }
     }
 }

@@ -50,6 +50,10 @@ class GoldenSpiral extends Phaser.Scene {
                 this.currentStep++;
             }
         }
+
+        if (this.currentStep >= this.totalSteps){
+            EventBus.emit('captcha-complete');
+        }
     }
 
     private drawNextStep(): void {
