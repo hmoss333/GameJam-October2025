@@ -55,8 +55,7 @@ export class Captcha extends Scene
     override update(time: number, delta: number): void {
         if (Phaser.Input.Keyboard.JustDown(this.enterKey) && this.domElement.node.textContent != null)
         {
-            console.log('Completed Captcha');
-            EventBus.emit('captcha-complete');
+            this.scene.start('Complete');
         }
     }
 }

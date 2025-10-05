@@ -4,7 +4,7 @@ import { EventBus } from '../EventBus';
 
 const PHI = (1 + Math.sqrt(5)) / 2;
 
-class GoldenSpiral extends Phaser.Scene {
+export class GoldenSpiral extends Phaser.Scene {
     background: GameObjects.Image;
     logo: GameObjects.Image;
     title: GameObjects.Text;
@@ -19,9 +19,7 @@ class GoldenSpiral extends Phaser.Scene {
     private y!: number;
 
     private currentStep: number = 0;
-    private totalSteps: number = 30; // Number of Fibonacci circles to draw
-
-    private completed: boolean = false;
+    private totalSteps: number = 40; // Number of Fibonacci circles to draw
 
     constructor() {
         super({ key: 'GoldenSpiral' });
@@ -53,10 +51,9 @@ class GoldenSpiral extends Phaser.Scene {
             }
         }
 
-        if (this.currentStep >= this.totalSteps && !this.completed){
-            console.log("Completed captcha");
-            EventBus.emit('captcha-complete');
-            this.completed = true;
+        if (this.currentStep >= this.totalSteps)
+        {
+            this.scene.start('Complete');
         }
     }
 
@@ -93,5 +90,3 @@ class GoldenSpiral extends Phaser.Scene {
         }
     }
 }
-
-export { GoldenSpiral };
