@@ -13,8 +13,6 @@ export class Captcha extends Scene
 
     create ()
     {
-
-
         this.title = this.add.text(60, 220, 'Input the text shown...', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#000000',
             stroke: '#000000', strokeThickness: 1,

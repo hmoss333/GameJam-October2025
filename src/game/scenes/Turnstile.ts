@@ -1,5 +1,4 @@
 import { GameObjects, Scene } from 'phaser';
-
 import { EventBus } from '../EventBus';
 
 export class Turnstile extends Scene
@@ -8,6 +7,7 @@ export class Turnstile extends Scene
     logo: GameObjects.Image;
     title: GameObjects.Text;
     logoTween: Phaser.Tweens.Tween | null;
+    captchas: Array<string> = ['Captcha','GoldenSpiral', 'NameObject'];
 
     constructor ()
     {
@@ -40,7 +40,9 @@ export class Turnstile extends Scene
     
     changeScene ()
     {
-        this.scene.start('Captcha');
+        const randNum: number = Phaser.Math.Between(0, this.captchas.length - 1);
+        const sceneName: string = this.captchas[randNum];
+        this.scene.start(sceneName);
     }
 
 }
