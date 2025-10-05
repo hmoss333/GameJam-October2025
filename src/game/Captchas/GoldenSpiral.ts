@@ -19,7 +19,7 @@ export class GoldenSpiral extends Phaser.Scene {
     private y!: number;
 
     private currentStep: number = 0;
-    private totalSteps: number = 40; // Number of Fibonacci circles to draw
+    private totalSteps: number = 30; // Number of Fibonacci circles to draw
 
     constructor() {
         super({ key: 'GoldenSpiral' });
@@ -39,20 +39,18 @@ export class GoldenSpiral extends Phaser.Scene {
         this.drawNextStep();
         this.currentStep++;
 
+        this.input.on('pointerdown', this.onClick, this);
+
         EventBus.emit('current-scene-ready', this);
     }
 
-    override update(time: number, delta: number): void {
-        if (this.input.mousePointer.leftButtonDown() && this.currentStep < this.totalSteps) {
-            if (this.spiralSpeed-- <= 0) {
-                this.spiralSpeed = 10;
-                this.drawNextStep();
-                this.currentStep++;
-            }
-        }
+    private onClick() {
+        console.log('down');
 
-        if (this.currentStep >= this.totalSteps)
-        {
+        this.drawNextStep();
+        this.currentStep++;
+
+        if (this.currentStep >= this.totalSteps) {
             this.scene.start('Complete');
         }
     }
@@ -66,7 +64,7 @@ export class GoldenSpiral extends Phaser.Scene {
         const size = this.fibonacci[this.currentStep] * this.scaleFactor;
         const lastSize = (this.currentStep > 0) ? this.fibonacci[this.currentStep - 1] * this.scaleFactor : 0;
 
-        this.graphics.fillStyle(0xD4AF37, 0.1); // Semi-transparent gold circles
+        this.graphics.fillStyle(0xD4AF37, 0.5); // Semi-transparent gold circles
         this.graphics.fillCircle(this.x, this.y, size);
 
         switch (this.currentStep % 4) {
