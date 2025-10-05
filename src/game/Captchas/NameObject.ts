@@ -37,5 +37,7 @@ export class NameObject extends Scene
 
         const domElement = this.add.dom(250, 300, inputElement);
         domElement.setOrigin(0.5); // Center the DOM element
+
+        EventBus.emit('current-scene-ready', this);
     }
 }

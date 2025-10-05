@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { GameObjects, Scene } from 'phaser';
+import { EventBus } from '../EventBus';
 
 const PHI = (1 + Math.sqrt(5)) / 2;
 
@@ -37,6 +38,8 @@ class GoldenSpiral extends Phaser.Scene {
 
         this.drawNextStep();
         this.currentStep++;
+
+        EventBus.emit('current-scene-ready', this);
     }
 
     override update(time: number, delta: number): void {

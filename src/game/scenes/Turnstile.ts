@@ -38,10 +38,11 @@ export class Turnstile extends Scene
         EventBus.emit('current-scene-ready', this);
     }
     
-    changeScene ()
+    public changeScene ()
     {
         const randNum: number = Phaser.Math.Between(0, this.captchas.length - 1);
         const sceneName: string = this.captchas[randNum];
+
         this.scene.start(sceneName);
     }
 

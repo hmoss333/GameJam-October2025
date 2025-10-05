@@ -20,6 +20,11 @@ export class Preloader extends Scene
         this.load.image('gatekeep_img', 'gatekeep.png');
         this.load.image('ship_img', 'ship.png');
         this.load.image('name_object', 'name_object.png')
+        this.load.image('captcha_candidate', 'candidate.png');
+        this.load.image('captcha_crime', 'crime.png');
+        this.load.image('captcha_mcdonalds', 'mcdonalds.png');
+        this.load.image('captcha_qualified', 'qualified.png');
+        this.load.image('captcha_real', 'real.png');
     }
 
     create ()
