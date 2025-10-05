@@ -18,15 +18,12 @@ export class PhaserCaptchaComponent implements OnInit
     {
         this.game = StartGame('game-container');
 
-        EventBus.on('current-scene-ready', (scene: Phaser.Scene) =>
+        EventBus.on('captcha-complete', (scene: Phaser.Scene) =>
         {
-            console.log("event emitter callback reached");
-            this.scene = scene;
-
-            if (this.sceneCallback)
-            {
-                this.sceneCallback(scene);
-            }
+            console.log("captcha complete received")
+            this.ngOnDestroy();
+            // todo: complete form submission and route to home page after this
+            console.log("component destroyed")
         });
     }
 

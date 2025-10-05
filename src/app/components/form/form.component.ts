@@ -49,7 +49,7 @@ export class FormComponent {
   onSubmit() {
     console.log(this.form());
     console.log(this.questions())
-    if (this.level > Number(this.route.snapshot.paramMap.get('id'))){
+    if (this.level >= Number(this.route.snapshot.paramMap.get('id'))){
       this.captcha.update(currentValue => !currentValue);
     } else {
       this.level += 1;
